@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->enum("name", ['A', 'B', 'C', 'D'])->nullable(false);
+            $table->string("description")->nullable(false);
+            $table->boolean("is_right")->nullable(false)->default(false);
+            $table->unsignedBigInteger("question_id")->nullable(false);
+
+            $table->foreign("question_id")->references("id")->on("questions")->onDelete("cascade");
         });
     }
 

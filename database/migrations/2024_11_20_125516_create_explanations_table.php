@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('explanations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text("description")->nullable(false);
+            $table->unsignedBigInteger("subject_id")->nullable(false);
+            $table->unsignedBigInteger("image_id")->nullable(false);
+
+            $table->foreign("subject_id")->references("id")->on("subjects")->onDelete("cascade");
+            $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");
         });
     }
 

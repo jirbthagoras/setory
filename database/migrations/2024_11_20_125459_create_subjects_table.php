@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string("name", 100)->nullable(false);
+            $table->string("location", 100)->nullable(false);
+            $table->text("descripton")->nullable(false);
+            $table->enum("category", ['building', 'culinary'])->nullable(false);
+            $table->string("video");
+            $table->unsignedBigInteger("image_id")->nullable(false);
+
+            $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");
         });
     }
 

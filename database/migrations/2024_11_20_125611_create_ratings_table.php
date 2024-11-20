@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->enum("rate", [1, 2, 3, 4, 5])->nullable(false);
+            $table->text("comment")->nullable(false);
+            $table->unsignedBigInteger("user_id")->nullable(false);
+            $table->unsignedBigInteger("subject_id")->nullable(false);
+
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->foreign("subject_id")->references("id")->on("subjects")->onDelete("cascade");
         });
     }
 
