@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('explanations', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->nullable(false);
-            $table->text("description")->nullable(false);
+            $table->integer("score")->nullable(false);
+            $table->unsignedBigInteger("user_id")->nullable(false);
             $table->unsignedBigInteger("subject_id")->nullable(false);
-            $table->unsignedBigInteger("image_id");
 
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->foreign("subject_id")->references("id")->on("subjects")->onDelete("cascade");
-            $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('explanations');
+        Schema::dropIfExists('scores');
     }
 };

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string("name", 100)->nullable(false);
             $table->string("location", 100)->nullable(false);
-            $table->text("descripton")->nullable(false);
+            $table->text("description")->nullable(false);
             $table->enum("category", ['building', 'culinary'])->nullable(false);
             $table->string("video");
-            $table->unsignedBigInteger("image_id")->nullable(false);
+            $table->unsignedBigInteger("image_id")->nullable(true);
 
             $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");
         });

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name", 50)->nullable(false);
             $table->string("description")->nullable(false);
             $table->unsignedBigInteger("subject_id")->nullable(false);
-            $table->unsignedBigInteger("image_id")->nullable(false);
+            $table->unsignedBigInteger("image_id")->nullable();
 
             $table->foreign("subject_id")->references("id")->on("subjects")->onDelete("cascade");
             $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");

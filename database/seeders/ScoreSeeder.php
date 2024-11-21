@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rating;
+use App\Models\Score;
 use App\Models\Subject;
 use http\Client\Curl\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RatingsSeeder extends Seeder
+class ScoreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,11 +18,11 @@ class RatingsSeeder extends Seeder
         $subject = Subject::query()->first();
         $user = \App\Models\User::query()->first();
 
-        Rating::query()->create([
-            "rate" => 5,
-            "comment" => "Comment 1",
+        Score::query()->create([
+            "score" => 100,
             "subject_id" => $subject->id,
             "user_id" => $user->id,
         ]);
+
     }
 }
