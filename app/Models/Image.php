@@ -17,7 +17,7 @@ class Image extends Model
     public $timestamps = false;
 
     public function subject(): HasOne {
-        return $this->hasOne(Subject::class, 'image_id  ', 'id');
+        return $this->hasOne(Subject::class, 'image_id', 'id');
     }
 
     public function explanation(): HasOne {

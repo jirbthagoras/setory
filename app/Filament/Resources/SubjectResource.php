@@ -4,12 +4,16 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubjectResource\Pages;
 use App\Filament\Resources\SubjectResource\RelationManagers;
+use App\Filament\Resources\SubjectResource\RelationManagers\ExplanationsRelationManager;
+use App\Models\Image;
 use App\Models\Subject;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,11 +28,19 @@ class SubjectResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
-                TextInput::make('location')->required(),
-                TextInput::make('description')->required(),
-                Forms\Components\Select::make('category')->options(["building" => "building", "culinary" => "culinary"]),
-                TextInput::make('video')->required(),
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('location')
+                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->required(),
+                Forms\Components\Select::make('category')
+                    ->options(["building" => "building", "culinary" => "culinary"]),
+                Forms\Components\Select::make('image_id')
+                    ->label('Image')->options(Image::all()
+                        ->pluck('name', 'id'))->required(),
+                TextInput::make('video')->label("Video Link")
+                    ->required(),
             ]);
     }
 
@@ -36,10 +48,24 @@ class SubjectResource extends Resource
     {
         return $table
             ->columns([
-
+                Tables\Columns\TextColumn::make("name")
+                    ->label("Name")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make("location")
+                    ->label("Location"),
+                Tables\Columns\TextColumn::make("description")
+                    ->label("Description"),
+                Tables\Columns\TextColumn::make("category")
+                    ->label("Category"),
+                Tables\Columns\TextColumn::make("video")
+                    ->label("Video"),
+                Tables\Columns\TextColumn::make("image.link")
+                    ->label("Image Link"),
             ])
             ->filters([
-                //
+                SelectFilter::make('category')
+                ->options(["building" => "Building", "culinary" => "Culinary"])
+                ->attribute("category"),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -54,7 +80,7 @@ class SubjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ExplanationsRelationManager::class
         ];
     }
 
