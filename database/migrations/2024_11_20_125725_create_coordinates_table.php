@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('coordinates', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable(false);
             $table->string("lat")->nullable(false);
             $table->string("lng")->nullable(false);
             $table->unsignedBigInteger("subject_id")->nullable(false);

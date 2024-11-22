@@ -38,7 +38,7 @@ class SubjectResource extends Resource
                     ->options(["building" => "building", "culinary" => "culinary"]),
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
-                        ->pluck('name', 'id'))->required(),
+                        ->pluck('name', 'id')),
                 TextInput::make('video')->label("Video Link")
                     ->required(),
             ]);

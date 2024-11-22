@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text("description")->nullable(false);
             $table->enum("category", ['building', 'culinary'])->nullable(false);
             $table->string("video");
-            $table->unsignedBigInteger("image_id")->nullable(true);
+            $table->unsignedBigInteger("image_id")->nullable();
 
             $table->foreign("image_id")->references("id")->on("images")->onDelete("cascade");
         });
