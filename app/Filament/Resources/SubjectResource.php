@@ -22,7 +22,7 @@ class SubjectResource extends Resource
 {
     protected static ?string $model = Subject::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
     public static function form(Form $form): Form
     {
@@ -80,7 +80,8 @@ class SubjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ExplanationsRelationManager::class
+            ExplanationsRelationManager::class,
+            RelationManagers\QuestionsRelationManager::class
         ];
     }
 
