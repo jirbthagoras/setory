@@ -59,8 +59,8 @@ class SubjectResource extends Resource
                     ->label("Category"),
                 Tables\Columns\TextColumn::make("video")
                     ->label("Video"),
-                Tables\Columns\TextColumn::make("image.link")
-                    ->label("Image Link"),
+                Tables\Columns\ImageColumn::make('image.link')
+                    ->label('Image')
             ])
             ->filters([
                 SelectFilter::make('category')

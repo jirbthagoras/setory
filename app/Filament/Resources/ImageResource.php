@@ -35,9 +35,8 @@ class ImageResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Name')
                 ->searchable(),
-                TextColumn::make('link')->label('Link'),
-                Tables\Columns\TextColumn::make("explanation.name"),
-                Tables\Columns\TextColumn::make("subject.name")
+                Tables\Columns\ImageColumn::make('link')
+                    ->label('Image')
             ])
             ->filters([
                 //

@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\SubjectResource\RelationManagers;
 
+use App\Models\Image;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -20,7 +22,14 @@ class QuestionsRelationManager extends RelationManager
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Name'),
+                Forms\Components\Textarea::make('description')
+                    ->required()
+                    ->label("Description"),
+                Forms\Components\Select::make('image_id')
+                    ->label('Image')->options(Image::all()
+                        ->pluck('name', 'id'))->required(),
             ]);
     }
 
@@ -30,6 +39,8 @@ class QuestionsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\ImageColumn::make('image.link'),
             ])
             ->filters([
                 //
