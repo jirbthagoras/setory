@@ -53,5 +53,13 @@ class UserServiceProviderTest extends TestCase
         self::assertEquals("john@doe.com", auth()->user()->email);
     }
 
+    public function testLogout() {
+        $this->testLogin();
+
+        $this->userService->logout();
+
+        self::assertEquals(null, auth()->user());
+    }
+
 
 }
