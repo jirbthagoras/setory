@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\UserLogin;
+use App\Livewire\LoginPage;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', UserLogin::class)->name('login-page');
+Route::get('/login', LoginPage::class)->name('login-page');;
