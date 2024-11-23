@@ -13,6 +13,7 @@ use Database\Seeders\ScoreSeeder;
 use Database\Seeders\SubjectsSeeder;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertTrue;
 
 class UserServiceProviderTest extends TestCase
 {
@@ -45,8 +46,8 @@ class UserServiceProviderTest extends TestCase
         $this->userService->register([
             "name" => "John Doe",
             "email" => "john@doe.com",
-            "password" => "password"
-        ]);
+            "password" => "password",
+            ]);
 
         self::assertEquals(1, User::all()->count());
         self::assertEquals("John Doe", User::all()->first()->name);
@@ -194,6 +195,20 @@ class UserServiceProviderTest extends TestCase
     {
 
         var_dump($this->userService->getAllEvents());
+
+    }
+
+    public function testCreate()
+    {
+
+        User::query()->create([
+            "name" => "Jirb",
+            "email" => "a@a.com",
+            "password" => "password",
+            "is_admin" => true,
+        ]);
+
+        assertTrue(true);
 
     }
 
