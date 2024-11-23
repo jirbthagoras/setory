@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\ORM;
 
 use App\Models\Image;
 use App\Models\Question;
@@ -11,8 +11,6 @@ use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\ImagesSeeder;
 use Database\Seeders\RatingsSeeder;
 use Database\Seeders\SubjectsSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RatingTest extends TestCase

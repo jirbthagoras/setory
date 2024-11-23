@@ -43,7 +43,7 @@ class QuestionResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
-                        ->pluck('name', 'id'))->required(),
+                        ->pluck('name', 'id')),
             ]);
     }
 

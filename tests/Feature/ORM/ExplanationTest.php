@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\ORM;
 
 use App\Models\Explanation;
 use App\Models\Image;
@@ -8,8 +8,6 @@ use App\Models\Subject;
 use Database\Seeders\ExplanationsSeeder;
 use Database\Seeders\ImagesSeeder;
 use Database\Seeders\SubjectsSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertEquals;
 

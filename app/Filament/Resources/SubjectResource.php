@@ -35,10 +35,12 @@ class SubjectResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required(),
                 Forms\Components\Select::make('category')
-                    ->options(["building" => "building", "culinary" => "culinary"]),
+                    ->options(["building" => "building", "culinary" => "culinary"])
+                    ->required(),
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
-                        ->pluck('name', 'id')),
+                        ->pluck('name', 'id'))
+                    ->required(),
                 TextInput::make('video')->label("Video Link")
                     ->required(),
             ]);
