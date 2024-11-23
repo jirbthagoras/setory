@@ -23,6 +23,11 @@ class Chat extends Model
 
     public function replies(): HasMany
     {
-        return $this->hasMany(Reply::class, "chat_id", "id");
+        return $this->hasMany(Chat::class, "chat_id", "id");
+    }
+
+    public function chat(): BelongsTo
+    {
+        return $this->belongsTo(Chat::class, "chat_id", "id");
     }
 }

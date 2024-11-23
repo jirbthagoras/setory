@@ -40,4 +40,9 @@ class Subject extends Model
         return $this->hasOne(Score::class, "subject_id", "id");
     }
 
+    public function coordinates(): HasMany
+    {
+        return $this->hasMany(Coordinate::class, "subject_id", "id");
+    }
+
 }

@@ -8,7 +8,7 @@ trait UserScoreService
 {
     public function getScore(int $subject_id)
     {
-        $user_id = auth()->user()->id;
+        $user_id = auth()->id();
 
         if ($score = Score::query()
             ->where('user_id', "=", $user_id)
@@ -30,5 +30,16 @@ trait UserScoreService
         ]);
 
         return "Score successfully created";
+    }
+
+    public function updateScore(int $subject_id,int $newScore)
+    {
+        $score = $this->getScore($subject_id);
+
+        $score->score = $newScore;
+
+        $score->save();
+
+        return $score->toArray();
     }
 }

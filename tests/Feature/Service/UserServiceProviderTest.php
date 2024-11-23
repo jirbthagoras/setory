@@ -2,6 +2,9 @@
 
 namespace Tests\Feature\Service;
 
+use App\Models\Chat;
+use App\Models\Rating;
+use App\Models\Reply;
 use App\Models\Score;
 use App\Models\Subject;
 use App\Models\User;
@@ -22,6 +25,8 @@ class UserServiceProviderTest extends TestCase
         User::query()->truncate();
         Subject::query()->truncate();
         Score::query()->truncate();
+        Chat::query()->truncate();
+        Rating::query()->truncate();
 
         $this->userService = $this->app->make(UserService::class);
     }
@@ -85,9 +90,104 @@ class UserServiceProviderTest extends TestCase
     {
         $this->testLogin();
 
-        $this->seed(SubjectsSeeder::class);
+        $this->seed([SubjectsSeeder::class, ScoreSeeder::class]);
 
         assertEquals("Score successfully created", $this->userService->createScore(1, 100));
+    }
+
+    public function testUpdateScore()
+    {
+        $this->testCreateScore();
+
+        var_dump($this->userService->updateScore(1, 90));
+    }
+
+
+    public function testCreateChat()
+    {
+
+        $this->testLogin();
+
+        assertEquals('Chat created', $this->userService->createChat("Ini chat"));
+
+    }
+
+    public function testCreateReply()
+    {
+        $this->testCreateChat();
+
+        assertEquals('Reply created', $this->userService->createReply("Ini Reply", 1));
+
+        $reply = Chat::query()->has('chat')->first();
+
+    }
+
+    public function testDeleteChat()
+    {
+
+        $this->testCreateChat();
+
+        assertEquals("Chat deleted", $this->userService->deleteChat(1));
+
+    }
+
+    public function testGetAllChat()
+    {
+        $this->testCreateReply();
+
+        var_dump($this->userService->getAllChat());
+    }
+
+    public function testGetAllSubjects()
+    {
+        var_dump($this->userService->getAllSubjects());
+
+        self::assertTrue(true);
+    }
+
+    public function testGetSubject()
+    {
+        var_dump($this->userService->getSubject(1));
+
+        self::assertTrue(true);
+    }
+
+    public function testCreateRating()
+    {
+
+        $this->testLogin();
+
+        $this->seed([SubjectsSeeder::class]);
+
+        assertEquals("Rating created", $this->userService->createRating(1, "huh", 1));
+
+    }
+
+    public function testGetCurrentRating()
+    {
+
+        $this->testCreateRating();
+
+        $this->userService->currentRating(1)->toArray();
+
+    }
+
+    public function testUpdateRating()
+    {
+
+        $this->testGetCurrentRating();
+
+        $this->userService->updateRating(1, "comment baru", 1)->toArray();
+
+    }
+
+    public function testGetAllRatings()
+    {
+
+        $this->testUpdateRating();
+
+        var_dump($this->userService->getAllRatings());
+
     }
 
 

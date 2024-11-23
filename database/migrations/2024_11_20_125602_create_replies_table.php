@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-            $table->text("message")->nullable(false);
-            $table->unsignedBigInteger("user_id")->nullable(false);
-            $table->unsignedBigInteger("chat_id")->nullable(false);
-            $table->timestamps();
-        });
+//        Schema::create('replies', function (Blueprint $table) {
+//            $table->id();
+//            $table->text("message")->nullable(false);
+//            $table->unsignedBigInteger("user_id")->nullable(false);
+//            $table->unsignedBigInteger("chat_id")->nullable(false);
+//            $table->timestamps();
+//        });
+
+        Schema::dropIfExists('replies');
     }
 
     /**
