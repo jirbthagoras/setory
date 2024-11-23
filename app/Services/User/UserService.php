@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Services\User\Chat\UserChatService;
+use App\Services\User\Event\UserEventService;
 use App\Services\User\Login\UserLoginService;
 use App\Services\User\Logout\UserLogoutService;
 use App\Services\User\Rating\UserRatingService;
@@ -20,4 +21,5 @@ UserService
     use UserChatService;
     use UserSubjectService;
     use UserRatingService;
+    use UserEventService;
 }

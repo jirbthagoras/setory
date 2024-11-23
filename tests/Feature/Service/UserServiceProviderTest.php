@@ -190,5 +190,12 @@ class UserServiceProviderTest extends TestCase
 
     }
 
+    public function testGetAllEvents()
+    {
+
+        var_dump($this->userService->getAllEvents());
+
+    }
+
 
 }

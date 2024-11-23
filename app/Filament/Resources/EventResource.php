@@ -28,6 +28,7 @@ class EventResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make("name"),
                 Forms\Components\Textarea::make("description"),
+                Forms\Components\TextInput::make("location"),
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
                         ->pluck('name', 'id')),
@@ -40,6 +41,7 @@ class EventResource extends Resource
             ->columns([
                 TextColumn::make("name")->label("Name"),
                 TextColumn::make("description")->label("Description"),
+                TextColumn::make("location")->label("Location"),
                 ImageColumn::make("image.link")->label("Image")
             ])
             ->filters([
