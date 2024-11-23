@@ -6,7 +6,7 @@
         <!-- Header -->
         <div class="text-center animate-float">
             <h2 class="text-3xl font-bold text-primary">Selamat Datang!</h2>
-            <p class="mt-2 text-sm text-primary/60">Sebelum mengeksplor, daftar terlebih dahulu!</p>
+            <p class="mt-2 text-sm text-primary/60">Sebelum mengeksplor, masuk terlebih dahulu!</p>
         </div>
 
         <!-- Login Form -->
@@ -34,7 +34,7 @@
 
             <div class="text-center text-sm">
                 <span class="text-primary/60">Belum punya akun?</span>
-                <a href="#" class="font-medium text-primary hover:text-primary/80 ml-1 transition-colors duration-300">Daftar</a>
+                <a href="{{ route('register-page') }}" class="font-medium text-primary hover:text-primary/80 ml-1 transition-colors duration-300">Daftar</a>
             </div>
         </form>
     </div>
