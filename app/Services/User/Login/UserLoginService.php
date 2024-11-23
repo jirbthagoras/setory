@@ -10,5 +10,7 @@ trait UserLoginService
 
         auth()->user();
 
+        return "User successfully logged in";
+
     }
 }

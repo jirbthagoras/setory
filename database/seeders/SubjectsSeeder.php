@@ -14,7 +14,7 @@ class SubjectsSeeder extends Seeder
      */
     public function run(): void
     {
-        $image = Image::query()->first();
+//        $image = Image::query()->first();
 
         Subject::query()->create([
             "name" => "subject 1",
@@ -22,7 +22,7 @@ class SubjectsSeeder extends Seeder
             "description" => "description Subject 1",
             "category" => "building",
             "video" => "building",
-            "image_id" => $image->id,
+//            "image_id" => $image->id,
         ]);
     }
 }

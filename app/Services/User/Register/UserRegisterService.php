@@ -6,9 +6,11 @@ use App\Models\User;
 
 trait UserRegisterService
 {
-    public function register(array $data): void
+    public function register(array $data)
     {
         User::query()
             ->create($data);
+
+        return "User successfully created";
     }
 }
