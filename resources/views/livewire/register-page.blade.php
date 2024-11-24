@@ -12,6 +12,12 @@
         </div>
             @endif
 
+            @error('register')
+                <div class="p-4 mb-4 text-white bg-red-600 rounded">
+                    {{ $message }}
+                </div>
+            @enderror
+
             <!-- Register Form -->
             <form wire:submit.prevent='create' class="mt-8 space-y-6">
                 <div class="space-y-4">

@@ -2,15 +2,13 @@
 
 namespace App\Services\User\Login;
 
+use App\Exceptions\UserException;
+
 trait UserLoginService
 {
     public function login(array $data) {
-
-        auth()->attempt($data);
-
-        auth()->user();
-
-        return "User successfully logged in";
-
+        if(! auth()->attempt($data)) {
+            throw UserException::loginFailed();
+        }
     }
 }

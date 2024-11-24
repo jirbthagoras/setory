@@ -18,22 +18,16 @@ class RegisterPage extends Component
         ];
 
     public function create(UserService $userService) {
-        $this->validate();
+        $credentials = $this->validate();
 
         try {
-            $userService->register([
-                "name" => $this->name,
-                "email" => $this->email,
-                "password" => $this->password,
-            ]);
+            $userService->register($credentials);
         } catch (\Exception $e) {
             $this->addError("register", $e->getMessage());
         }
 
-
         session()->flash('success', 'Akun telah dibuat, silahkan Log In sekarang!');
         session()->flash('email',$this->email);
-
 
         $this->reset(['name','email','password']);
 
