@@ -9,12 +9,23 @@
             <p class="mt-2 text-sm text-primary/60">Sebelum mengeksplor, masuk terlebih dahulu!</p>
         </div>
 
+        @if (session('success'))
+        <div class="p-4 mb-4 text-green-600 bg-green-100 rounded">
+            {{ session('success') }}
+        </div>
+            @endif
+
         <!-- Login Form -->
         <form class="mt-8 space-y-6">
             <div class="space-y-4">
                 <div class="input-wrapper">
                     <label for="email" class="block text-sm font-medium text-primary">Email</label>
                     <input type="email" id="email" name="email" required
+                            value= @if (session('email'))
+                                {{session('email')}}
+                                @else
+                                ""
+                            @endif
                            class="mt-1 block w-full px-3 py-2 bg-primary/5 border border-primary/20 rounded-md shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/30 focus:outline-none transition-all duration-300"
                            placeholder="Enter your email">
                 </div>

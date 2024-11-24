@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>{{$title}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <style>
             .cursor-dot {
                 width: 300px;
@@ -56,21 +59,25 @@
 
             .strength-very-weak {
                 background: #ff4444;
+                font: bold;
                 box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
             }
 
             .strength-weak {
                 background: #ffa700;
+                font: bold;
                 box-shadow: 0 0 10px rgba(255, 167, 0, 0.2);
             }
 
             .strength-medium {
                 background: #ffe600;
+                font: bold;
                 box-shadow: 0 0 10px rgba(255, 230, 0, 0.2);
             }
 
             .strength-strong {
                 background: #14a44d;
+                font: bold;
                 box-shadow: 0 0 10px rgba(20, 164, 77, 0.2);
             }
 

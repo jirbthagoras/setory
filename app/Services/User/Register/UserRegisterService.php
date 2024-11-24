@@ -9,8 +9,10 @@ trait UserRegisterService
     public function register(array $data)
     {
         User::query()
-            ->create($data);
-
-        return "User successfully created";
+            ->create([
+                "name" => $data["name"],
+                "email" => $data["email"],
+                "password"=> $data["password"],
+            ]);
     }
 }

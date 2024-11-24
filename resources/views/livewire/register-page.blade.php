@@ -6,26 +6,37 @@
                 <p class="mt-2 text-sm text-primary/60">Bergabung dengan kami untuk menjelajahi waktu!</p>
             </div>
 
+            @if (session('success'))
+        <div class="p-4 mb-4 text-green-600 bg-green-100 rounded">
+            {{ session('success') }}
+        </div>
+            @endif
+
             <!-- Register Form -->
-            <form class="mt-8 space-y-6">
+            <form wire:submit.prevent='create' class="mt-8 space-y-6">
                 <div class="space-y-4">
                     <div class="input-wrapper">
                         <label for="name" class="block text-sm font-medium text-primary">Nama</label>
                         <input type="text" id="name" name="name" required
+                            wire:model='name'
                             class="mt-1 block w-full px-3 py-2 bg-primary/5 border border-primary/20 rounded-md shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/30 focus:outline-none transition-all duration-300"
                             placeholder="Enter your full name">
+                        @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="input-wrapper">
                         <label for="email" class="block text-sm font-medium text-primary">Email</label>
                         <input type="email" id="email" name="email" required
+                            wire:model='email'
                             class="mt-1 block w-full px-3 py-2 bg-primary/5 border border-primary/20 rounded-md shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/30 focus:outline-none transition-all duration-300"
                             placeholder="your.email@example.com">
+                            @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div id="passwordWrapper" class="password-input-wrapper p-4 rounded-lg border border-primary/20">
                         <label for="password" class="block text-sm font-medium text-primary">Password</label>
                         <input type="password" id="password" name="password" required
+                            wire:model='password'
                             class="mt-1 block w-full px-3 py-2 bg-primary/5 border border-primary/20 rounded-md shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary/30 focus:outline-none transition-all duration-300"
                             placeholder="Create a strong password"
                             oninput="updatePasswordStrength(this.value)"
@@ -36,7 +47,8 @@
                             <div id="strengthBar3" class="h-1 rounded-full bg-gray-200 transition-all duration-300"></div>
                             <div id="strengthBar4" class="h-1 rounded-full bg-gray-200 transition-all duration-300"></div>
                         </div>
-                        <p id="passwordStrengthText" class="text-xs mt-2 transition-all duration-300">Masukkan Password</p>
+                        <p id="passwordStrengthText" class="font-bold text-xs mt-2 transition-all duration-300">Masukkan Password</p>
+                        @error('password') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
