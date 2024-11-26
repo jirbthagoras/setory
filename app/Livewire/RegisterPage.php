@@ -22,16 +22,13 @@ class RegisterPage extends Component
 
         try {
             $userService->register($credentials);
+            session()->flash('success', 'Akun telah dibuat, silahkan Log In sekarang!');
+            session()->flash('email', $this->email);
+            return response()->redirectTo(route("login-page"));
         } catch (\Exception $e) {
             $this->addError("register", $e->getMessage());
+            return null;
         }
-
-        session()->flash('success', 'Akun telah dibuat, silahkan Log In sekarang!');
-        session()->flash('email',$this->email);
-
-        $this->reset(['name','email','password']);
-
-        return response()->redirectTo(route("login-page"));
     }
 
     public function render()

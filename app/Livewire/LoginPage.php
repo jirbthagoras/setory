@@ -11,8 +11,13 @@ use Livewire\Component;
 
 class LoginPage extends Component
 {
-    public string $email;
-    public string $password;
+    public string $email = "";
+    public string $password = "";
+
+    public function mount()
+    {
+        $this->email = session('email') ? session('email', $this->email) : "" ;
+    }
 
     protected array $rules = [
         "email" => ["required", "email", "exists:users,email"],
@@ -24,10 +29,10 @@ class LoginPage extends Component
 
         try {
             $userService->login($credentials);
-            return response()->redirectTo(route("check"));
+            return response()->redirectTo(route("home-page"));
         } catch (UserException $exception) {
             $this->addError('error', $exception->getMessage());
-//            return \response()->redirectTo(route('login-page'));
+            return null;
         }
     }
 

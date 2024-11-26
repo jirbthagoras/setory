@@ -7,6 +7,7 @@ use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use App\Models\Image;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -32,6 +33,13 @@ class EventResource extends Resource
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
                         ->pluck('name', 'id')),
+                DatePicker::make('from')
+                    ->label('From')
+                    ->format('d/m/Y'),
+                DatePicker::make('until')
+                    ->label('Until')
+                    ->format('d/m/Y')
+
             ]);
     }
 
@@ -42,6 +50,8 @@ class EventResource extends Resource
                 TextColumn::make("name")->label("Name"),
                 TextColumn::make("description")->label("Description"),
                 TextColumn::make("location")->label("Location"),
+                TextColumn::make("from")->label("From"),
+                TextColumn::make("until")->label("Until"),
                 ImageColumn::make("image.link")->label("Image")
             ])
             ->filters([
