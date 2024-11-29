@@ -7,7 +7,7 @@
     0 0 20px #f3b664,
     0 0 30px #f3b664,
     0 0 40px #f3b664;
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 3s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
@@ -18,9 +18,9 @@
     }
     to {
         text-shadow: 0 0 20px #f3b664,
-        0 0 30px #f3b664,
-        0 0 40px #f3b664,
-        0 0 50px #f3b664;
+        0 0 15px #f3b664,
+        0 0 35px #f3b664,
+        0 0 40px #f3b664;
     }
 }
 .group {

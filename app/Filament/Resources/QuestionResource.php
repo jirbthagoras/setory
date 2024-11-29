@@ -44,6 +44,9 @@ class QuestionResource extends Resource
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
                         ->pluck('name', 'id')),
+                Forms\Components\Textarea::make('wrong_message')
+                    ->required()
+                    ->label('Wrong Message'),
             ]);
     }
 
@@ -53,6 +56,7 @@ class QuestionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('wrong_message'),
                 Tables\Columns\TextColumn::make('subject.name')
                 ->label('Subject'),
                 Tables\Columns\ImageColumn::make('image.link')

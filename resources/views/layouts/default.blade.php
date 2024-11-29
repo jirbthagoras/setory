@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>{{$title}}</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
     <style>
+            /* Custom transition styles */
+            .transition-container {
+                transition: transform 0.5s ease-in-out;
+            }
+            .shift-left {
+                transform: translateX(-50%);
+            }
             .cursor-dot {
                 width: 300px;
                 height: 300px;
@@ -87,7 +91,7 @@
     </style>
 </head>
 <body>
-<div class="bg-primary">
+<div class="bg-primary h-screen flex justify-center items-center">
     {{ $slot }} <!-- This is where your component content will render -->
 </div>
 @livewireScripts

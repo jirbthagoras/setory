@@ -1,7 +1,7 @@
 <body class="bg-primary">
 <div class="h-full w-full">
     <!-- Navigation -->
-    @include('navbar')
+    @include('components.navbar')
 
     <!-- Hero Section -->
     <div class="mx-auto px-4">
@@ -17,12 +17,17 @@
             <h1 class="text-center text-[60px] font-semibold font-sans text-white leading-[150px]">
                 SELAMAT DATANG!
 
-                <strong class="text-center text-[60px] font-semibold font-sans text-white leading-[100px] glow">{{auth()->check() ? auth()->user()->name : "GUEST"}}</strong>
+                <strong
+                    class="text-center text-[60px] font-semibold font-sans text-white leading-[100px] glow">{{auth()->check() ? auth()->user()->name : "GUEST"}}</strong>
             </h1>
 
             <!-- Hero Description -->
             <p class="text-white text-[20px] font-medium font-sans leading-1 max-w-4xl mx-auto mt-8">
-                Mari kita mulai <strong class="glow text-[25px]">PERJALANAN</strong> Anda menjelajahi sejarah dan budaya Nusantara. <strong class="glow text-[25px]">SETORY</strong> hadir untuk menghadirkan cerita dari berbagai daerah di Indonesia, dengan terus memperkaya <strong class="glow text-[25px]">KONTEN</strong> agar semakin luas dan mendalam. Menyatu dengan <strong class="text-[25px] glow">SEJARAH</strong>, Menginspirasi Masa Depan
+                Mari kita mulai <strong class="glow text-[25px]">PERJALANAN</strong> Anda menjelajahi sejarah dan budaya
+                Nusantara. <strong class="glow text-[25px]">SETORY</strong> hadir untuk menghadirkan cerita dari
+                berbagai daerah di Indonesia, dengan terus memperkaya <strong class="glow text-[25px]">KONTEN</strong>
+                agar semakin luas dan mendalam. Menyatu dengan <strong class="text-[25px] glow">SEJARAH</strong>,
+                Menginspirasi Masa Depan
             </p>
         </div>
 
@@ -71,27 +76,32 @@
                      style="top: 00; right: 0;"
                      data-speed="0.3">
             </div>
+            <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black z-50"></div>
         </div>
     </div>
 
     <!-- Tour Guide Section -->
-    <div id="tour" class="min-h-screen flex flex-col items-center justify-center p-10 relative">
+    <div class="min-h-screen flex flex-col items-center justify-center p-10 relative">
         <!-- Main content -->
         <div class="text-center z-10 mb-10">
             <h1 class="text-secondary text-[150px] font-garamond font-bold glow">Mulai Tour</h1>
-            <p class="text-white font-sans font-bold leading-9 text-lg">Jelajahi Destinasi Yang Ingin Kamu Pelajari!</p>
+            <p class="text-white font-sans font-bold leading-10 text-lg">Jelajahi Destinasi Yang Ingin Kamu
+                Pelajari!</p>
         </div>
         <div class="flex justify-center items-center gap-1 z-10">
             @foreach($subjects as $subject)
 
-                @include('historical-card', ["subject" => $subject])
+                @include('components.historical-card', ["subject" => $subject])
 
             @endforeach
         </div>
 
         <!-- Bottom text -->
         <div class="text-center mt-10 z-10">
-            <a href=""><p class="text-xl text-white font-garamond text-sm">Klik disini untuk menjelajah lebih banyak</p></a>
+            <a href="/tour"
+               class="px-4 py-2 bg-[#ffd3ac]/10 rounded-[10px] text-white text-xs font-semibold font-['Plus Jakarta Sans'] text-[1rem] leading-[50px] glow">
+                Lebih banyak
+            </a>
         </div>
     </div>
     <div class="mt-24">
@@ -100,19 +110,25 @@
             <div class="flex items-center justify-center gap-4 w-full">
                 @foreach($culinaries as $culinary)
 
-                    @include("kuliner", ["culinary" => $culinary])
+                    @include("components.kuliner", ["culinary" => $culinary])
 
                 @endforeach
             </div>
         </div>
-        <h1 class="text-white text-center pt-10 text-lg font-semibold font-sans leading-7">Klik Disini Untuk Jelajah Lebih Banyak</h1>
+        <div class="text-center mt-10 z-10">
+            <a href="#"
+               class="px-4 py-2 bg-[#ffd3ac]/10 rounded-[10px] text-white text-xs font-semibold font-['Plus Jakarta Sans'] text-[1rem] leading-[18px] glow">
+                Lebih banyak
+            </a>
+        </div>
     </div>
 
-    <div class="relative mt-16 z-10 container mx-auto">
+    <div class="relative mt-16 z-10 container mx-auto" id="event">
         <!-- Judul Event -->
         <h1 class="text-[150px] text-center font-semibold font-garamond text-secondary mb-4 glow">Event</h1>
         <p class="text-3xl text-white font-medium font-garamond max-w-2xl text-center mx-auto">
-            Temukan beragam acara menarik yang kami tawarkan. Dari seminar hingga bazar lokal, jadikan momen spesialmu lebih bermakna bersama kami
+            Temukan beragam acara menarik yang kami tawarkan. Dari seminar hingga bazar lokal, jadikan momen spesialmu
+            lebih <strong class="glow">BERMAKNA</strong> bersama kami
         </p>
         <!-- GambarPerintilan -->
         <div>
@@ -135,40 +151,42 @@
 
             @foreach($events as $event)
 
-                @if($event->id & 2 != 0)
-                    <div class="flex justify-center items-center gap-6 mx-auto container mt-8">
-                        <img src="{{$event->image->link}}" alt="Main Event" class="h-[319px] rounded-3xl shadow">
-                        <div class="h-[319px] w-96 rounded-3xl">
-                            <h1 class="text-4xl text-start font-garamond font-bold glow text-white">Museum Jakarta</h1>
-                            <h2 class="text-start font-bold font-sans glow text-white mt-2">Lokasi: Semarang </h2>
-                            <p class="text-xl mt-2 text-white text-start font-garamond">Ini kokokokokokok kokokokokoko kokokokokokoko adalah Museum Jakarta yang ada di semarang</p>
-                        </div>
-                    </div>
-                @else
-                    <div class="flex justify-center items-center gap-6 mx-auto container mt-8">
-                        <div class="h-[319px] w-96 rounded-3xl">
-                            <h1 class="text-4xl text-start font-garamond font-bold glow text-white">Museum Jakarta</h1>
-                            <p class="text-xl mt-2 text-white text-start font-garamond">Ini kokokokokokok kokokokokoko kokokokokokoko adalah Museum Jakarta yang ada di semarang</p>
-                        </div>
-                        <img src="{{$event->image->link}}" alt="Main Event" class="h-[319px] rounded-3xl shadow">
-                    </div>
-                @endif
+                @include('components.event-card', ['event' => $event])
 
             @endforeach
         </div>
-
-        <!-- Gambar Perintilan -->
-        <div class="mt-23">
-            <img
-                class="w-[200px] h-[200px] left-64 absolute rounded-[18px] glow hover:scale-110 transition-all duration-300"
-                src="/asset4.png"
-            />
-            <img
-                class="w-[200px] h-[200px] right-32  absolute rounded-[18px] drop-shadow-xl hover:scale-110 transition-all duration-300"
-                src="/asset5.png"
-            />
-        </div>
     </div>
+
+    <section class="mt-20">
+        <div
+            class="relative h-screen flex items-center justify-center bg-cover bg-center"
+            style="background-image: url('/imagecomuniy.jpg')"
+        >
+            <!-- Overlay Blur -->
+            <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center text-white px-4">
+                <h1
+                    class="text-8xl font-semibold font-garamond text-secondary mb-2 leading-[135px]"
+                >
+                    Ikuti Komunitas Kami
+                </h1>
+                <p class="text-3xl font-sans mb-16 leading-[45px]">
+                    Diskusikan fakta sejarah unik dan temukan destinasi bersejarah
+                    baru <br />
+                    bersama komunitas kami
+                </p>
+                <button
+                    class="px-12 py-4 bg-[#6c512e] text-white font-sans text-3xl leading-10 rounded-3xl hover:bg-opacity-90 ease-in-out transition duration-300"
+                >
+                    Mulai
+                </button>
+            </div>
+        </div>
+    </section>
+
+    @include('components.footer')
 
 </div>
 <script src="/js/parallax.js"></script>

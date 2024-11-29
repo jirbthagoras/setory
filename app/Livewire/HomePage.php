@@ -10,20 +10,16 @@ class HomePage extends Component
 {
     public function render()
     {
-
-//        dd(Subject::query()
-//            ->where("category", "=", "culinary")
-//            ->get());
-
         return view('livewire.home-page',[
             "subjects" => Subject::query()
             ->where("category", "building")
-            ->limit(5)
-            ->with("image")
-            ->get(),
+                ->limit(5)
+                ->with("image")
+                ->get(),
             "culinaries" => Subject::query()
             ->where("category", "=", "culinary")
-            ->get(),
+                ->limit(5)
+                ->get(),
             "events" => Event::all()
             ])
             ->layout('layouts.app', ["title" => "Home"]);

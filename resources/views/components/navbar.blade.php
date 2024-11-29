@@ -6,10 +6,10 @@
 
     <!-- Navbar Links -->
     <div class="flex items-center gap-8">
-        <a href="#" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Home</a>
-        <a href="#tour" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Tour</a>
-        <a href="#kuliner" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Kuliner</a>
-        <a href="#" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Event</a>
+        <a href="/" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Home</a>
+        <a href="/tour" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Tour</a>
+        <a href="/culinary" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Kuliner</a>
+        <a href="#event" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Event</a>
         <a href="#" class="text-white text-sm font-semibold font-sans leading-[21px] px-4 py-2">Komunitas</a>
 
         <!-- Login Button -->
