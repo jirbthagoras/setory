@@ -4,8 +4,8 @@
 @include('components.navbar')
 
     @foreach($buildings as $building)
-        @if($building->id % 2 != 0)
-            <div class="relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
+        @if($loop->index % 2 != 0)
+            <div wire:click="goTo({{$building->id}})" class="relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
                 <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
                 <div class="flex flex-wrap w-full">
                     <!-- Konten Kiri -->
@@ -25,7 +25,7 @@
                 </div>
             </div>
         @else
-            <div class="relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
+            <div wire:click="goTo({{$building->id}})" class="relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
                 <!-- Overlay untuk background -->
                 <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
                 <div class="flex flex-wrap w-full justify-end">

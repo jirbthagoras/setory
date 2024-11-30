@@ -7,6 +7,10 @@ use Livewire\Component;
 
 class BuildingPage extends Component
 {
+    public function goTo($id)
+    {
+        return response()->redirectTo(route('subject', ['id' => $id]));
+    }
     public function render()
     {
         return view('livewire.building-page',

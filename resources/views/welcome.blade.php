@@ -3,71 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Peta dengan Beberapa Titik Koordinat</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<div class="bg-gray-900 text-white">
-    <header class="py-4 px-6 flex justify-between items-center">
-        <div class="text-2xl font-bold">LOGO</div>
-        <nav class="space-x-4">
-            <a href="#" class="hover:text-gray-400 transition duration-300">Home</a>
-            <a href="#" class="hover:text-gray-400 transition duration-300">Tour</a>
-            <a href="#" class="hover:text-gray-400 transition duration-300">Kuliner</a>
-            <a href="#" class="hover:text-gray-400 transition duration-300">Event</a>
-            <a href="#" class="hover:text-gray-400 transition duration-300">Komunitas</a>
-            <a href="#" class="hover:text-gray-400 transition duration-300">Login/Sign Up</a>
-        </nav>
-    </header>
+<h1>Peta dengan Beberapa Titik Koordinat</h1>
+<div id="map"></div>
 
-    <main>
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
-            <div class="bg-cover bg-center h-64 md:h-auto" style="background-image: url('https://via.placeholder.com/800x600')">
-                <div class="bg-gray-900 bg-opacity-70 h-full flex flex-col justify-center items-center">
-                    <h2 class="text-2xl font-bold">Lawang Sewu</h2>
-                    <p class="text-gray-400 mb-4">Kota Semarang</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-medium py-2 px-4 rounded transition duration-300">Mulai Quiz</a>
-                        <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-300">Tonton Video</a>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-cover bg-center h-64 md:h-auto" style="background-image: url('https://via.placeholder.com/800x600')">
-                <div class="bg-gray-900 bg-opacity-70 h-full flex flex-col justify-center items-center">
-                    <h2 class="text-2xl font-bold">Hotel Yamato</h2>
-                    <p class="text-gray-400 mb-4">Kota Surabaya</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-medium py-2 px-4 rounded transition duration-300">Mulai Quiz</a>
-                        <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-300">Tonton Video</a>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-cover bg-center h-64 md:h-auto" style="background-image: url('https://via.placeholder.com/800x600')">
-                <div class="bg-gray-900 bg-opacity-70 h-full flex flex-col justify-center items-center">
-                    <h2 class="text-2xl font-bold">Taman Proklamasi</h2>
-                    <p class="text-gray-400 mb-4">Kota Jakarta</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-medium py-2 px-4 rounded transition duration-300">Mulai Quiz</a>
-                        <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-300">Tonton Video</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([51.505, -0.09], 13); // Titik pusat peta
 
-    <footer class="bg-gray-800 py-6">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-center md:text-left mb-4 md:mb-0">
-                <h3 class="text-lg font-semibold">Travel Website</h3>
-                <p class="text-sm opacity-75">&copy; 2023 Travel Website. All Rights Reserved.</p>
-            </div>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-gray-400 transition duration-300">About</a>
-                <a href="#" class="hover:text-gray-400 transition duration-300">Contact</a>
-                <a href="#" class="hover:text-gray-400 transition duration-300">Privacy</a>
-            </div>
-        </div>
-    </footer>
-</div>
+    // Menambahkan tile layer OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Menambahkan marker untuk beberapa koordinat
+    var coordinates = [
+        [51.505, -0.09],  // Titik 1
+        [51.515, -0.1],   // Titik 2
+        [51.525, -0.12], // Titik 3
+    ];
+
+    coordinates.forEach(function(coord) {
+        L.marker(coord).addTo(map)
+            .bindPopup('Koordinat: ' + coord)
+            .openPopup();
+    });
+</script>
 </body>
 </html>

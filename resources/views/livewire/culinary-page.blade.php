@@ -1,48 +1,33 @@
-<body class="bg-gradient-to-r from-[#312414] to-[#f3b664]">
-
+<body class="bg-primary">
 <div>
-
 @include('components.navbar')
 
-    @foreach($culinaries as $culinary)
+<!-- Hero Section -->
+<div class="py-20 mb-12 text-center">
+    <h1 class="text-5xl font-extrabold text-[#f3b664] mb-4">Makanan Khas Nusantara</h1>
+    <p class="text-lg text-gray-200">Jelajahi kekayaan rasa dari berbagai daerah di Indonesia</p>
+</div>
+<!-- Grid Cards -->
+<div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Lumpia Kanan-->
+        @foreach($culinaries as $culinary)
 
-            <div
-                class="container mx-auto flex flex-wrap md:flex-nowrap flex-row-reverse items-center mt-20"
-            >
-
-                <div class="w-full md:w-1/2 flex justify-end items-center ">
-                    <img
-                        src="{{$culinary->image->link}}"
-                        alt="{{$culinary->name}}"
-                        class="w-[377px] h-[392px] rounded-full"
-                    />
+            <div class="card bg-[#312414] border border-[#f3b664] rounded-xl shadow-xl overflow-hidden transform transition-all">
+                <div class="flex justify-center items-center">
+                    <img src="{{$culinary->image->link}}" alt="{{$culinary->name}}" class="w-80 h-56 object-cover rounded-[20px] mt-[1rem]" />
                 </div>
-                <div class="w-full md:w-1/2 text-left">
-                    <h1
-                        class="text-start text-white text-[40px] font-bold font-sans leading-[60px]"
-                    >
-                        {{$culinary->name}}<br /> {{$culinary->location}}
-                    </h1>
-                    <div class="w-[644px] text-">
-                        <h1 class="text-white text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">
+                <div class="p-6">
+                    <h2 class="text-3xl font-bold text-[#f3b664] mb-3">{{$culinary->name}}</h2>
+                    <p class="text-gray-300 text-sm mb-4">
                             {{$culinary->description}}
-                        </h1>
-                        <a class="text-[#94410c] text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">Baca selengkapnya</a>
-                    </div>
+                    </p>
+                    <a href="#" class="text-[#f3b664] font-semibold hover:opacity-90 transition-colors">Baca selengkapnya</a>
                 </div>
             </div>
-            <!-- Garis di bawah -->
-            <div
-                class="absolute mt-8 left-0 right-0 mx-auto w-full border-t border-white"
-            ></div>
 
-    @endforeach
-
-<!-- Bika Ambon Kiri -->
-
-
-    @include('components.footer')
+        @endforeach
+    </div>
+</div>
 </div>
 </body>
