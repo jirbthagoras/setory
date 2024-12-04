@@ -14,6 +14,8 @@ Route::group(['middleware' => \App\Http\Middleware\OnlyGuestMiddleware::class], 
     Route::get('/register', RegisterPage::class)->name('register-page');
 });
 
+Route::get('/community', \App\Livewire\CommunityPage::class)->name('community');
+
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
