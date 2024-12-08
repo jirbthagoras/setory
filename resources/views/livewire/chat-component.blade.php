@@ -11,7 +11,7 @@
                  wire:key="{{$message->id}}">
                 <img src="https://via.placeholder.com/50" alt="Erlangga" class="w-12 h-12 rounded-full" />
                 <div class="dark:bg-white/5 p-4 rounded-lg shadow max-w-[75%] break-words">
-                    <h2 class="font-semibold">{{$message->user->name}}</h2>
+                    <h2 class="font-semibold">{{auth()->id() == $message->user->id ? "You" : $message->user->name}}</h2>
                     <p>
                         {{$message->message}}
                     </p>
@@ -52,14 +52,28 @@
 
 <div class="flex items-center bg-[#1E1007CC] mt-4 rounded-full p-8 shadow-lg w-full mx-auto">
     <!-- Input Field -->
+{{--    <textarea wire:model="text"--}}
+{{--              id="message-input"--}}
+{{--              cols="40"--}}
+{{--              rows="1"--}}
+{{--              class="flex-grow bg-transparent text-white placeholder-white focus:outline-none px-4"--}}
+{{--              placeholder="{{isset($reply) ? "Replying {$reply->user->name}'s message: {$reply->message}" : "Write Message"}}"--}}
+{{--              style="--}}
+{{--              resize: vertical;--}}
+{{--        --}}
+{{--              "--}}
+{{--    ></textarea>--}}
+    <div class="relative w-full max-w-2xl mx-auto">
     <textarea wire:model="text"
               id="message-input"
               cols="40"
               rows="1"
-              class="flex-grow bg-transparent text-white placeholder-white focus:outline-none px-4"
-              placeholder="{{isset($reply) ? "Replying {$reply->user->name}'s message: {$reply->message}" : "Write Message"}}"
-              style="resize: vertical"
+              class="flex-grow bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 px-4 py-2 rounded-lg w-full resize-vertical shadow-md"
+              placeholder="{{isset($reply) ? 'Replying to ' . $reply->user->name . ': ' . $reply->message : 'Write your message here...'}}"
+              aria-label="Community message input"
     ></textarea>
+    </div>
+
     <!-- Send Button -->
     @isset($replyId)
         <button

@@ -178,6 +178,7 @@
                     bersama komunitas kami
                 </p>
                 <button
+                    onclick="window.location.href='/community'"
                     class="px-12 py-4 bg-[#6c512e] text-white font-sans text-3xl leading-10 rounded-3xl hover:bg-opacity-90 ease-in-out transition duration-300"
                 >
                     Mulai

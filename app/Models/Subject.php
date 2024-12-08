@@ -35,9 +35,9 @@ class Subject extends Model
         return $this->hasOne(Rating::class, "subject_id", "id");
     }
 
-    public function score(): HasOne
+    public function scores(): HasMany
     {
-        return $this->hasOne(Score::class, "subject_id", "id");
+        return $this->hasMany(Score::class, "subject_id", "id");
     }
 
     public function coordinates(): HasMany

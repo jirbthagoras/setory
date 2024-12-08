@@ -14,5 +14,7 @@
 
     <script src="/js/komunitas.js"></script>
 
+    @include('components.footer')
 </div>
+
 </body>

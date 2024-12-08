@@ -62,9 +62,9 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(Rating::class, "user_id", "id");
     }
 
-    public function score(): HasOne
+    public function scores(): HasMany
     {
-        return $this->hasOne(Score::class, "user_id", "id");
+        return $this->hasMany(Score::class, "user_id", "id");
     }
 
     public function chats(): HasMany

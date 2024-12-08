@@ -16,8 +16,6 @@ class RatingComponent extends Component
     public function mount()
     {
         $this->user = auth()->user();
-
-
     }
 
     public function createRating()

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Score extends Model
 {
@@ -15,13 +16,13 @@ class Score extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    public function user(): BelongsTo
+    public function user(): BelongsToMany
     {
-        return $this->belongsTo(User::class, "user_id", "id");
+        return $this->belongsToMany(User::class, "user_id", "id");
     }
 
-    public function subject(): BelongsTo
+    public function subject(): BelongsToMany
     {
-        return $this->belongsTo(Subject::class, "subject_id", "id");
+        return $this->belongsToMany(Subject::class, "subject_id", "id");
     }
 }

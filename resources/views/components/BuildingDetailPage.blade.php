@@ -17,11 +17,14 @@
                 {{$building->description}}
             </p>
             <div class="flex mt-6 gap-6">
-                <button
-                    class="bg-[#8B5E3C] hover:bg-[#A67B5B] text-white px-4 py-2 rounded-xl"
-                >
-                    Mulai Quiz
-                </button>
+                <div class="text-center">
+                    <button
+                        onclick="window.location.href='/start-quiz/{{$building->id}}'"
+                        class="bg-[#8B5E3C] hover:bg-[#A67B5B] text-white px-4 py-2 rounded-xl"
+                    >
+                        Mulai Quiz
+                    </button>
+                </div>
                 <button
                     class="bg-[#8B5E3C] hover:bg-[#A67B5B] text-white px-4 py-2 rounded-xl"
                 >
@@ -29,18 +32,32 @@
                 </button>
             </div>
             @foreach($building->explanations as $explanation)
-                <div class="mt-4">
+                <div class="mt-4 mb-4">
                     <button
                         onclick="toggleAnswer(this)"
                         class="w-full text-left bg-primary text-xl text-white px-4 py-4 rounded-lg font-medium hover:bg-opacity-90 transition duration-500 ease-in-out"
-                    >{{$explanation->name}}
+                    >
+                        {{$explanation->name}}
                     </button>
                     <div
-                        class="answer hidden mt-2 bg-secondary border border-gray-300 p-4 rounded-lg"
+                        class="answer hidden mt-2 bg-secondary border border-gray-300 p-4 rounded-lg flex flex-col items-start"
                     >
-                        {{$explanation->description}}
+                        <img
+                            src="{{$explanation->image->link}}"
+                            alt="Explanation Image"
+                            class="w-full max-w-xs rounded-md mb-2 shadow-md"
+                        >
+                        <p>{{$explanation->description}}</p>
                     </div>
                 </div>
+
+                <script>
+                    function toggleAnswer(button) {
+                        const answerDiv = button.nextElementSibling;
+                        answerDiv.classList.toggle('hidden');
+                    }
+                </script>
+
             @endforeach
             <!-- Tema 1 -->
 
@@ -73,8 +90,11 @@
 
                 <div>
 
-                <!-- Form Ulasan -->
-                @livewire('RatingComponent', ['subjectId' => $building->id])
+                    @if(auth()->check())
+                        @livewire('RatingComponent', ['subjectId' => $building->id])
+                    @else
+                        <h1>Anda perlu login untuk mengakses fitur ini</h1>
+                    @endif
             </div>
 
 

@@ -21,6 +21,12 @@
         </div>
         @enderror
 
+        @if(session('error'))
+            <div class="p-4 mb-4 text-white bg-red-600 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- Login Form r-->
         <form wire:submit.prevent="login" class="mt-8 space-y-6">
             <div class="space-y-4">
