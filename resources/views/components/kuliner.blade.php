@@ -3,6 +3,6 @@
     <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <h3 class="text-white glow text-2xl font-bold mb-2">{{$culinary->name}}</h3>
         <p class="text-white text-sm pb-2">{{$culinary->description}}</p>
-        <a href="" class="px-2 py-2 bg-primary mt-4 text-secondary glow rounded-lg hover:opacity-55">Cari Tahu</a>
+        <a href="/subject/{{$culinary->id}}" class="px-2 py-2 bg-primary mt-4 text-secondary glow rounded-lg hover:opacity-55">Cari Tahu</a>
     </div>
 </div>

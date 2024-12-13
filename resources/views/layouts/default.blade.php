@@ -90,10 +90,8 @@
             }
     </style>
 </head>
-<body>
-<div class="bg-primary h-screen flex justify-center items-center">
+<body class="bg-primary">
     {{ $slot }} <!-- This is where your component content will render -->
-</div>
 @livewireScripts
 </body>
 </html>

@@ -12,21 +12,24 @@
         }
     </style>
 <div
-    class="relative flex flex-wrap md:flex-nowrap h-full bg-cover"
+    class="-z-0 relative flex flex-wrap md:flex-nowrap h-full bg-cover"
     style="background-image: url('{{$building->image->link}}')"
 >
     <div class="absolute inset-0 bg-primary bg-opacity-70 z-10"></div>
     <div
         class="container mx-auto flex flex-wrap md:flex-nowrap h-auto gap-8 z-20"
     >
-        <div class="w-full flex flex-col mt-16">
-            <h1 class="text-white text-2xl font-bold z-20 mb-14">
-                {{$building->name}} <br />{{$building->location}}
+        <div class="w-full flex flex-col text-center md:text-start mt-16">
+            <h1 class="text-white text-2xl font-bold z-20 mb-6">
+                {{$building->name}}
+                <br/>
+                {{$building->location}}
             </h1>
-            <p class="font-light text-white text-lg font-sans z-20">
+            <p class="font-light text-white text-lg font-sans z-20 ">
                 {{$building->description}}
             </p>
-            <div class="flex mt-6 gap-6">
+
+            <div class="flex mt-6 mb-6 gap-6 justify-center md:justify-start">
                 <div class="text-center">
                     <button
                         onclick="window.location.href='/start-quiz/{{$building->id}}'"
@@ -97,7 +100,7 @@
                         coordinates.forEach(function(coordinate) {
                             L.marker([coordinate.lat, coordinate.lng])
                                 .addTo(map)
-                                .bindPopup(coordinate.name || "No Title")
+                                .bindPopup(coordinate.name)
                                 .openPopup();
                         });
                     });

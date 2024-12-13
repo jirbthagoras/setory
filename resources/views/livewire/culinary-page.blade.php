@@ -22,7 +22,7 @@
                     <p class="text-gray-300 text-sm mb-4">
                             {{$culinary->description}}
                     </p>
-                    <a href="#" class="text-[#f3b664] font-semibold hover:opacity-90 transition-colors">Baca selengkapnya</a>
+                    <a href="/subject/{{$culinary->id}}" class="text-[#f3b664] font-semibold hover:opacity-90 transition-colors">Baca selengkapnya</a>
                 </div>
             </div>
 

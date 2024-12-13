@@ -16,8 +16,6 @@
                         {{$message->message}}
                     </p>
 
-
-                    <!-- New Reply Design -->
                     <div class="mt-2 ml-4 border-l-2 border-gray-300 pl-3">
                         <div class="flex items-center space-x-2 mb-1">
                             <img src="https://via.placeholder.com/30" alt="Reply User" class="w-6 h-6 rounded-full" />
@@ -50,19 +48,7 @@
     @endforeach
 </div>
 
-<div class="flex items-center bg-[#1E1007CC] mt-4 rounded-full p-8 shadow-lg w-full mx-auto">
-    <!-- Input Field -->
-{{--    <textarea wire:model="text"--}}
-{{--              id="message-input"--}}
-{{--              cols="40"--}}
-{{--              rows="1"--}}
-{{--              class="flex-grow bg-transparent text-white placeholder-white focus:outline-none px-4"--}}
-{{--              placeholder="{{isset($reply) ? "Replying {$reply->user->name}'s message: {$reply->message}" : "Write Message"}}"--}}
-{{--              style="--}}
-{{--              resize: vertical;--}}
-{{--        --}}
-{{--              "--}}
-{{--    ></textarea>--}}
+<div class="flex items-center bg-[#1E1007CC] mt-4 rounded-xl p-4 shadow-lg w-full mx-auto">
     <div class="relative w-full max-w-2xl mx-auto">
     <textarea wire:model="text"
               id="message-input"

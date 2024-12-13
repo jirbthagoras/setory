@@ -116,7 +116,7 @@
             </div>
         </div>
         <div class="text-center mt-10 z-10">
-            <a href="#"
+            <a href="/culinary"
                class="px-4 py-2 bg-[#ffd3ac]/10 rounded-[10px] text-white text-xs font-semibold font-['Plus Jakarta Sans'] text-[1rem] leading-[18px] glow">
                 Lebih banyak
             </a>
