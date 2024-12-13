@@ -17,7 +17,7 @@ Route::middleware(['isGuest'])->group(function () {
 Route::middleware(['isUser'])->group(function () {
     Route::get('/community', \App\Livewire\CommunityPage::class)->name('community-page');
     Route::get('/quiz/{subject_id}', \App\Livewire\QuestionPage::class)
-        ->name('quiz-page');
+        ->name('quiz-page')->middleware('checkRedirect');
     Route::get('/start-quiz/{subject_id}', \App\Livewire\StartQuizPage::class)
         ->name('start-quiz');
 });

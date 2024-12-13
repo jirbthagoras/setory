@@ -1,6 +1,16 @@
 <body class="bg-primary">
 <div>
 @include('components.navbar')
+
+    <style>
+        #map {
+            height: 300px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+    </style>
 <div
     class="relative flex flex-wrap md:flex-nowrap h-full bg-cover"
     style="background-image: url('{{$building->image->link}}')"
@@ -68,19 +78,34 @@
             <h2 class="text-2xl font-bold text-secondary">Lokasi {{$building->name}}</h2>
 
             @isset($building->coordinates[0])
-                <iframe
-                    src="https://www.google.com/maps?q={{$building->coordinates[0]->lat}},{{$building->coordinates[0]->lng}}&hl=id&z=15&output=embed"
-                    class="w-96 h-[350px] rounded-lg shadow-lg border border-gray-300"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    style="pointer-events: none"
-                >
-                </iframe>
+                <div id="map" wire:ignore style="height: 300px; width: 100%;"></div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Initialize the map
+                        var map = L.map('map').setView([ -6.98407491356221, 110.41080280250812 ], 15);
+
+                        // Add tile layer
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+
+                        // Define coordinates array from the Blade template
+                        var coordinates = @json($building->coordinates);
+
+                        // Loop through the coordinates and add markers
+                        coordinates.forEach(function(coordinate) {
+                            L.marker([coordinate.lat, coordinate.lng])
+                                .addTo(map)
+                                .bindPopup(coordinate.name || "No Title")
+                                .openPopup();
+                        });
+                    });
+                </script>
+
             @else
                 <h1>Lokasi Belum Tersedia</h1>
             @endisset
-
 
             <div class="container mx-auto px-4 py-8">
                 <!-- Heading -->
