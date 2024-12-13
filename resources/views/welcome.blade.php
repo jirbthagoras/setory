@@ -3,40 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta dengan Beberapa Titik Koordinat</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
+    <title>Quiz</title>
+    @vite('resources/css/app.css')
 </head>
-<body>
-<h1>Peta dengan Beberapa Titik Koordinat</h1>
-<div id="map"></div>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-    var map = L.map('map').setView([51.505, -0.09], 13); // Titik pusat peta
-
-    // Menambahkan tile layer OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Menambahkan marker untuk beberapa koordinat
-    var coordinates = [
-        [51.505, -0.09],  // Titik 1
-        [51.515, -0.1],   // Titik 2
-        [51.525, -0.12], // Titik 3
-    ];
-
-    coordinates.forEach(function(coord) {
-        L.marker(coord).addTo(map)
-            .bindPopup('Koordinat: ' + coord)
-            .openPopup();
-    });
-</script>
+<body class="bg-primary min-h-screen justify-center text-center text-white">
+<div class="flex flex-col items-center justify-center h-screen container mx-auto">
+    <div class="w-[775px] h-[234px] bg-[#6c512e] flex items-center justify-center shadow-md shadow-secondary rounded-xl">
+        <h2 class="text-sm md:text-base lg:text-2xl mb-6 leading-relaxed ">
+            Lorem ipsum dolor sit amet consectetur. Maecenas neque lacus pharetra non tortor adipiscing cras. Consectetur purus tortor pellentesque dictum. Placerat non volutpat commodo in amet.
+        </h2>
+    </div>
+    <div class="grid grid-cols-2 gap-6 w-[775px] mt-20 font-sans">
+        <button class=" text-white text-2xl py-4 px-8 rounded-lg hover:bg-[#6C512E] hover:duration-300 hover:ease-in-out hover:text-secondary focus:ring-2 focus:ring-[#9b836e] font-semibold">
+            A. Apa nama bangunan
+        </button>
+        <button class=" text-white text-2xl py-4 px-8 rounded-lg hover:bg-[#6C512E] hover:duration-300 hover:ease-in-out hover:text-secondary focus:ring-2 focus:ring-[#9b836e] font-semibold">
+            B. Apa nama bangunan
+        </button>
+        <button class=" text-white text-2xl py-4 px-8 rounded-lg hover:bg-[#6C512E] hover:duration-300 hover:ease-in-out hover:text-secondary focus:ring-2 focus:ring-[#9b836e] font-semibold">
+            C. Apa nama bangunan
+        </button>
+        <button class=" text-white text-2xl py-4 px-8 rounded-lg hover:bg-[#6C512E] hover:duration-300 hover:ease-in-out hover:text-secondary focus:ring-2 focus:ring-[#9b836e] font-semibold">
+            D. Apa nama bangunan
+        </button>
+    </div>
+</div>
+</div>
 </body>
 </html>
