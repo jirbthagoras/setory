@@ -1,7 +1,7 @@
 <nav class="z-10 w-full h-20 mx-auto relative flex items-center justify-between px-8">
     <!-- Logo -->
     <div class="text-white text-lg font-bold font-['Plus Jakarta Sans'] leading-[27px]">
-        LOGO
+        <img src="/logo.png" alt="Logo" class="w-[3rem] h-[3rem]">
     </div>
 
     <!-- Hamburger Menu -->
