@@ -5,7 +5,7 @@
 
     @foreach($buildings as $building)
         @if($loop->index % 2 != 0)
-            <div  class="z-0 relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
+            <div  class="z-0 relative flex flex-wrap md:flex-nowrap bg-cover bg-center h-fit" style="background-image: url({{$building->image->link}})">
                 <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
                 <div class="flex flex-wrap w-full">
                     <!-- Konten Kiri -->
@@ -28,7 +28,7 @@
                 </div>
             </div>
         @else
-            <div class="z-0 relative flex flex-wrap md:flex-nowrap h-[300px] bg-cover bg-center" style="background-image: url({{$building->image->link}}); height: 300px;">
+            <div class="z-0 relative flex flex-wrap md:flex-nowrap h-fit bg-cover bg-center" style="background-image: url({{$building->image->link}})">
                 <!-- Overlay untuk background -->
                 <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
                 <div class="flex flex-wrap w-full justify-end">
