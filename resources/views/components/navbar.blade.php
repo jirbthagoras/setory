@@ -33,12 +33,6 @@
             Kuliner
         </a>
         <a
-            href="#event"
-            class="text-white hover:text-secondary rounded-md duration-200 ease-in-out text-sm font-semibold font-sans leading-[21px] px-4 py-2"
-        >
-            Event
-        </a>
-        <a
             href="/community"
             class="text-white hover:text-secondary rounded-md duration-200 ease-in-out text-sm font-semibold font-sans leading-[21px] px-4 py-2"
         >

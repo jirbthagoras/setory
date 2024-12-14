@@ -9,7 +9,6 @@
             <div class="flex space-x-4 mb-4"
                  wire:click="reply({{$message->id}})"
                  wire:key="{{$message->id}}">
-                <img src="https://via.placeholder.com/50" alt="Erlangga" class="w-12 h-12 rounded-full" />
                 <div class="dark:bg-white/5 p-4 rounded-lg shadow max-w-[75%] break-words">
                     <h2 class="font-semibold">{{auth()->id() == $message->user->id ? "You" : $message->user->name}}</h2>
                     <p>
@@ -18,7 +17,6 @@
 
                     <div class="mt-2 ml-4 border-l-2 border-gray-300 pl-3">
                         <div class="flex items-center space-x-2 mb-1">
-                            <img src="https://via.placeholder.com/30" alt="Reply User" class="w-6 h-6 rounded-full" />
                             <span class="text-xs font-medium text-gray-400">{{$message->chat->user->name}}</span>
                         </div>
                         <p class="text-sm text-gray-300">{{$message->chat->message}}</p>
@@ -33,7 +31,6 @@
             <div class="flex space-x-4 mb-4"
                  wire:click="reply({{$message->id}})"
                  wire:key="{{$message->id}}">
-                <img src="https://via.placeholder.com/50" alt="Erlangga" class="w-12 h-12 rounded-full" />
                 <div class="dark:bg-white/5 p-4 rounded-lg shadow max-w-[75%] break-words">
                     <h2 class="font-semibold">{{$message->user->name}}</h2>
                     <p>

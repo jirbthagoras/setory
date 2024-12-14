@@ -8,7 +8,7 @@
         @if(isset($score))
 
             <span class="font-semibold text-green-600">Sudah</span>
-        <p class="text-lg md:text-xl mt-2">Skor: <span class="font-bold">{{$score->score}}</span></p>
+        <p class="text-lg md:text-xl mt-2">Skor: <span class="font-bold">{{$score->score}}/5</span></p>
         @else
             <span class="font-semibold text-red-600">Belum<span>
         @endif

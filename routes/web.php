@@ -13,8 +13,8 @@ Route::middleware(['isGuest'])->group(function () {
 Route::middleware(['isUser'])->group(function () {
     Route::get('/community', \App\Livewire\CommunityPage::class)->name('community-page');
     Route::get('/quiz/{subject_id}', \App\Livewire\QuestionPage::class)
-        ->name('quiz-page');
-//        ->middleware('checkRedirect');
+        ->name('quiz-page')
+        ->middleware('checkRedirect');
     Route::get('/start-quiz/{subject_id}', \App\Livewire\StartQuizPage::class)
         ->name('start-quiz');
 });
@@ -35,3 +35,7 @@ Route::get('/logout', function () {
 Route::fallback(function () {
     return response()->view("not-found");
 })->name("not-found");
+
+Route::get('/not-found', function () {
+    return view('not-found');
+});

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckRedirectAccess
+class CheckSubjectExist
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,6 @@ class CheckRedirectAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session()->has('redirect_allowed')) {
-            return \response()->view('not-found');
-        }
-
-        // Clear the session key after it's used
-        session()->forget('redirect_allowed');
-
         return $next($request);
     }
 }

@@ -29,11 +29,10 @@ class ExplanationResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(),
                 Forms\Components\Select::make('image_id')
                     ->label('Image')->options(Image::all()
-                        ->pluck('name', 'id'))->required(),
+                        ->pluck('name', 'id')),
                 Forms\Components\Select::make('subject_id')
                     ->label('Subject')->options(Subject::all()
                         ->pluck('name', 'id'))->required(),

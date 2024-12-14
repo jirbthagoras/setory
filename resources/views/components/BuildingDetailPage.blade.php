@@ -40,6 +40,7 @@
                 </div>
                 <button
                     class="bg-[#8B5E3C] hover:bg-[#A67B5B] text-white px-4 py-2 rounded-xl"
+                    onclick="window.location.href='{{$building->video}}'"
                 >
                     Tonton Video
                 </button>
@@ -55,11 +56,13 @@
                     <div
                         class="answer hidden mt-2 bg-secondary border border-gray-300 p-4 rounded-lg flex flex-col items-start"
                     >
-                        <img
-                            src="{{$explanation->image->link}}"
-                            alt="Explanation Image"
-                            class="w-full max-w-xs rounded-md mb-2 shadow-md"
-                        >
+                        @if($explanation->image()->exists())
+                            <img
+                                src="{{$explanation->image->link}}"
+                                alt="{{$explanation->name}}"
+                                class="w-full max-w-xs rounded-md mb-2 shadow-md"
+                            >
+                        @endif
                         <p>{{$explanation->description}}</p>
                     </div>
                 </div>

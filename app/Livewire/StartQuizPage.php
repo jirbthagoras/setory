@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Subject;
 use Livewire\Component;
+use function PHPUnit\Framework\isEmpty;
 
 class StartQuizPage extends Component
 {
@@ -14,7 +15,12 @@ class StartQuizPage extends Component
     public function mount($subject_id)
     {
         $this->user = auth()->user();
-        $this->subject = Subject::query()->find($subject_id);
+
+        if (!$this->subject = Subject::query()->find($subject_id))
+        {
+            return response()->redirectTo('not-found');
+        }
+
         $this->score = $this->subject->scores->where("user_id", "=", $this->user->id)->first();
     }
 
@@ -25,6 +31,7 @@ class StartQuizPage extends Component
 
     public function render()
     {
+
         return view('livewire.start-quiz-page')
             ->layout("layouts.app", ["title" => "Quiz for {$this->subject->name}"]);
     }

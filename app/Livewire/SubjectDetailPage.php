@@ -13,11 +13,19 @@ class SubjectDetailPage extends Component
 
     public function mount()
     {
-        $this->subject = Subject::query()
-        ->where('id', $this->id)
-            ->with('image')
-            ->with('coordinates')
-        ->first();
+
+
+        if (
+            !$this->subject = Subject::query()
+                ->where('id', $this->id)
+                ->with('image')
+                ->with('coordinates')
+                ->first()
+        )
+        {
+            return response()->redirectTo('not-found');
+        }
+
     }
 
     public function render()

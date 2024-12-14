@@ -10,9 +10,9 @@
 
             <div class="dots-overlay"></div>
 
-            <h1 class="text-center text-[150px] font-semibold font-garamond text-secondary leading-[150px] glow">
-                SETORY
-            </h1>
+{{--            <h1 class="text-center text-[150px] font-semibold font-garamond text-secondary leading-[150px] glow">--}}
+{{--                SETORY--}}
+{{--            </h1>--}}
 
             <h1 class="text-center text-[60px] font-semibold font-sans text-white leading-[150px]">
                 SELAMAT DATANG!
@@ -92,6 +92,7 @@
             @foreach($subjects as $subject)
 
                 @include('components.historical-card', ["subject" => $subject])
+{{--                @include('components.historical-card', ["subject" => $subject])--}}
 
             @endforeach
         </div>
